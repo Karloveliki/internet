@@ -9,4 +9,13 @@ h1{
 }
 .sjedalo:hover {
     background-color: blue;
-  }
+}
+.zauzeto{
+    background-color: grey;
+}
+.izabrano{
+    background-color: aquamarine;
+}
+#kolikoOdabranih{
+    
+}
