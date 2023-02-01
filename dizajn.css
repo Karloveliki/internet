@@ -1,0 +1,12 @@
+h1{
+    color: brown;
+}
+.oznakareda{
+    color:green;
+}
+.sjedalo{
+    color: red;
+}
+.sjedalo:hover {
+    background-color: blue;
+  }
