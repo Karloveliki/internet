@@ -2,6 +2,13 @@
     <head>
         <link rel="stylesheet" href="dizajn.css">
         <script src="main.js"></script>
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+            integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+        </script>
     </head>
     <body>
        <h1>rezervacija karata</h1>
@@ -19,6 +26,11 @@
             <p>
                 <button id="rezervacija">Rezerviraj</button>
             </p>
+       </div>
+       <div id="qrcode" class="m-auto"></div>
+       <div id="potvrdaDiv" style="display:none;">
+        <button id="potvrda">Potvrdi</button>
+        <button id="odustanak">Odustani</button>
        </div>
     </body>
     <script>

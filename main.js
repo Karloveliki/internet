@@ -73,6 +73,80 @@ function popuniKolikoIzabranih(){
     }
 }
 
+function brojSjedala(el) {
+    return el.innerText
+}
+
+function oznakaReda(el) {
+    const otac =  el.parentElement
+    return otac.getAttribute("id").substring(3)
+}
+
+
+function getRezervirana() {
+    const izabrana=document.getElementsByClassName("izabrano")
+    const sjedalaRezervacija = []
+    for (const iz of izabrana) {
+        const brSjedala = brojSjedala(iz)
+        const ozReda = oznakaReda(iz)
+        sjedalaRezervacija.push(
+            {'r': ozReda, 's': brSjedala}
+        )
+    }
+    return sjedalaRezervacija
+}
+
+function potvrdaRezervacije() {
+    console.log("potvrda rezervacije")
+    // oznaci sva sjedala iz rezervacije kao zauzeta
+    const izabrana=Array.from(document.getElementsByClassName("izabrano"))
+    for (iz of izabrana) {
+        iz.classList.remove("izabrano")
+        iz.classList.add("zauzeto")
+        iz.onclick = null
+    }
+    const potvrdaDiv = document.getElementById("potvrdaDiv")
+    potvrdaDiv.style.display = "none"
+    const qrcode = document.getElementById("qrcode")
+    qrcode.innerHTML = ""
+    popuniKolikoIzabranih()
+}
+
+function odustanakOdRezervacije() {
+    console.log("odustanak od rezervacije")
+    const rezervirajButton = document.getElementById("rezervacija")
+    rezervirajButton.disabled=false
+    const potvrdaDiv = document.getElementById("potvrdaDiv")
+    potvrdaDiv.style.display = "none"
+    const qrcode = document.getElementById("qrcode")
+    qrcode.innerHTML = ""
+}
+
+
+function rezervacijaInProgress() {
+    console.log("rezervacija in progress")
+    const rezervirajButton = document.getElementById("rezervacija")
+    rezervirajButton.disabled=true
+    const potvrdaDiv = document.getElementById("potvrdaDiv")
+    potvrdaDiv.style.display = "block"
+    const potvrdaButton = document.getElementById("potvrda")
+    potvrdaButton.onclick = potvrdaRezervacije
+    const odustaniButton = document.getElementById("odustanak")
+    odustaniButton.onclick = odustanakOdRezervacije
+}
+
+function rezerviraj(ev) {
+    rezervacijaInProgress()
+    const rezervacijaString = JSON.stringify(getRezervirana());
+    const size=200
+    const qrcode = new QRCode('qrcode', {
+        text: rezervacijaString,
+        width: size,
+        height: size,
+        });     
+}
+
+
 function priljepiOnClick() {
     const sjedala=document.getElementsByClassName('sjedalo')
     for (sjedalo of sjedala) {
@@ -80,6 +154,8 @@ function priljepiOnClick() {
             sjedalo.onclick = sjedaloClicked
         }
     }
+    const rezervirajButton = document.getElementById("rezervacija")
+    rezervirajButton.onclick = rezerviraj
 }
 
 function popuniDvoranu(brRedova,brSjedala,zauzeta){
