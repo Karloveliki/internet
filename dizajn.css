@@ -1,17 +1,14 @@
 h1{
-    color: brown;
 }
 .oznakareda{
-    color:green;
 }
 .sjedalo{
-    color: red;
 }
 .sjedalo:hover {
     background-color: blue;
 }
 .zauzeto{
-    background-color: grey;
+    color: lightgrey;
 }
 .izabrano{
     background-color: aquamarine;

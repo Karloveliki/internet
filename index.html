@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="dizajn.css">
         <script src="main.js"></script>
         <script 
@@ -10,28 +11,33 @@
         >
         </script>
     </head>
-    <body>
-       <h1>rezervacija karata</h1>
-       <div id="dvorana">
-        <table >
-            
-        </table>
-        <div>
-            <p>
-                Izabrano sjedala: <span id="kolikoIzabranih"></span> </div>
-            </p>
-            <p style="display:none; " id="previseJePrevise">
-                Moguce je rezervirati najvise 5 sjedala!
-            </p>
-            <p>
-                <button id="rezervacija">Rezerviraj</button>
-            </p>
-       </div>
-       <div id="qrcode" class="m-auto"></div>
-       <div id="potvrdaDiv" style="display:none;">
-        <button id="potvrda">Potvrdi</button>
-        <button id="odustanak">Odustani</button>
-       </div>
+    <body class="w3-light-blue">
+        <div class="w3-container">
+            <h1>Studentplexx Rezervacija Karata </h1>
+            <div id="dvorana" class="w3-container ">
+             <table w3-table w3-border>
+                 
+             </table>
+             <div w3-container>
+                 <p>
+                     Izabrano sjedala: <span id="kolikoIzabranih"></span> 
+                 </p>
+                 <p>
+                    Ukupna cijena:<span id="cijena"></span> &euro;
+                 </p>
+                 <p style="display:none; " id="previseJePrevise">
+                     Moguce je rezervirati najvise 5 sjedala!
+                 </p>
+                 <p>
+                     <button id="rezervacija">Rezerviraj</button>
+                 </p>
+            </div>
+            <div id="qrcode" class="m-auto"></div>
+            <div id="potvrdaDiv" class="w3-container" style="display:none;" >
+             <button id="potvrda" class="w3-button">Potvrdi</button>
+             <button id="odustanak" class="w3-button">Odustani</button>
+            </div>
+        </div>    
     </body>
     <script>
         popuniDvoranu(5,20, [ {red:"A", sjedalo:7}, {red:"C", sjedalo:11}])

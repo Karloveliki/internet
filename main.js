@@ -1,11 +1,11 @@
-function probaj() {
-}
+
 
 function napraviSjedalo(i,red){
     sjedalo=document.createElement("td")
     sjedalo.innerText=i
     sjedalo.setAttribute("id","sjedalo"+i+"red"+red)
     sjedalo.classList.add("sjedalo")
+    sjedalo.classList.add("w3-padding-large")
     return sjedalo
 }
 
@@ -23,12 +23,14 @@ function napraviTr(red,brSjedala){
     row.setAttribute("id","row"+red)
     row.classList.add("redak")
     const celija= document.createElement("td")
+    celija.classList.add("w3-blue")
     celija.innerText=red
     celija.classList.add("oznakareda")
     row.appendChild(celija)
     for(let i=1;i<=brSjedala;i++){
         row.appendChild(napraviSjedalo(i,red))
     }
+    row.classList.add("w3-margin-32")
     return row
 }
 
@@ -45,19 +47,25 @@ function nextLetter(s){
 
 function sjedaloClicked(ev) {
     const sjedalo=ev.target;
-    if(sjedalo.classList.contains("izabrano")){
-        sjedalo.classList.remove("izabrano")
+    const potvrdaDiv = document.getElementById("potvrdaDiv")
+    if (potvrdaDiv.style.display == "none") {
+        if(sjedalo.classList.contains("izabrano")){
+            sjedalo.classList.remove("izabrano")
+        }
+        else{
+            sjedalo.classList.add("izabrano")
+        }
+       popuniKolikoIzabranih()
     }
-    else{
-        sjedalo.classList.add("izabrano")
-    }
-   popuniKolikoIzabranih()
 }
+
 function popuniKolikoIzabranih(){
     const izabrana=document.getElementsByClassName("izabrano")
     sp=document.getElementById("kolikoIzabranih")
     sp.innerText=izabrana.length
     const previse=document.getElementById("previseJePrevise")
+    const cjena=document.getElementById("cijena")
+    cjena.innerText=5*izabrana.length;
     if(izabrana.length>5){
        previse.style.display="block"
     }
