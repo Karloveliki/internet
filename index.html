@@ -13,7 +13,7 @@
     </head>
     <body class="w3-light-blue">
         <div class="w3-container">
-            <h1>Studentplexx Rezervacija Karata </h1>
+            <h1 class=" w3-center">Studentplexx Rezervacija Karata </h1>
             <div id="dvorana" class="w3-container ">
              <table w3-table w3-border>
                  
@@ -32,12 +32,16 @@
                      <button id="rezervacija">Rezerviraj</button>
                  </p>
             </div>
-            <div id="qrcode" class="m-auto"></div>
+            <div id="qrcode" class="m-auto" ></div>
             <div id="potvrdaDiv" class="w3-container" style="display:none;" >
              <button id="potvrda" class="w3-button">Potvrdi</button>
              <button id="odustanak" class="w3-button">Odustani</button>
             </div>
-        </div>    
+        </div>   
+        <div class="w3-container w3-center w3-text-gray w3-small">
+           <p> pri izradi je koristena zbirka <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a> te, <a href="https://github.com/llyys/qrcodejs">qrcodejs</a></p>
+            <p>Karlo Perkovic FESB 2023.g</p>
+        </div> 
     </body>
     <script>
         popuniDvoranu(5,20, [ {red:"A", sjedalo:7}, {red:"C", sjedalo:11}])
